@@ -39,7 +39,7 @@ pipeline {
             steps {
                 sh """
                     cd terraform
-                    terraform apply -var="app_version=${params.appVersion}"
+                    terraform apply -var="app_version=${params.appVersion} -auto-approve"
                 """
             }
         }
