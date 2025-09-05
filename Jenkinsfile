@@ -35,14 +35,14 @@ pipeline {
                 """
             }
         }
-        // stage('Apply') {
-        //     steps {
-        //         sh """
-        //             cd terraform
-        //             terraform apply -var="app_version=${param.appVersion}"
-        //         """
-        //     }
-        // }
+        stage('Deploy') {
+            steps {
+                sh """
+                    cd terraform
+                    terraform apply -var="app_version=${params.appVersion}"
+                """
+            }
+        }
         
     }
     post {
