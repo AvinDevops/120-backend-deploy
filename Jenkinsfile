@@ -19,7 +19,30 @@ pipeline {
                 
             }
         }
-       
+        stage('Init') {
+            steps {
+                sh """
+                    cd terraform
+                    terraform init
+                """
+            }
+        }
+        stage('Plan') {
+            steps {
+                sh """
+                    cd terraform
+                    terraform plan -var="app_version=${param.appVersion}"
+                """
+            }
+        }
+        // stage('Apply') {
+        //     steps {
+        //         sh """
+        //             cd terraform
+        //             terraform apply -var="app_version=${param.appVersion}"
+        //         """
+        //     }
+        // }
         
     }
     post {
